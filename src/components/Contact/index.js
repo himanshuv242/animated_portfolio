@@ -1,16 +1,39 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
+import emailjs from '@emailjs/browser'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate ')
-
+    const form = useRef()
     useEffect(() => {
         setTimeout(()=>{
             setLetterClass('text-animate-hover')
         },3000)
     },[])
+
+    const sendEmail = (e) => {
+        e.preventDefault()
+
+        emailjs
+            .sendForm(
+                'gmail',
+                'template_3zcea3e',
+                form.current,
+                'Oq1shbmElLDlOUUC2PEE8'
+            )
+            .then(
+                ()=>{
+                    alert('Message successfully sent!')
+                    window.location.reload(false)
+                },
+                () =>{
+                    alert('Failed to send the message, please try again')
+                }
+            )
+    }
 
     return (
         <>
@@ -30,7 +53,7 @@ const Contact = () => {
                 </p>
 
                 <div className="contact-form">
-                    <form>
+                    <form ref={form} onSubmit={sendEmail}>
                         <ul>
                             <li className="half">
                                 <input type="text" name='name' placeholder='Name' required />
@@ -51,6 +74,26 @@ const Contact = () => {
                         </ul>
                     </form>
                 </div>
+            
+            
+            </div>
+            <div className="info-map">
+                Himanshu Verma,
+                <br />
+                India
+                <br />
+                Pragati nagar
+                <br />
+                hardoi, U.P 241001 <br />
+                <span>himanshu_2019bele024@nitsri.net</span>
+            </div>
+            <div className="map-wrap">
+                <MapContainer center={[27.3965, 80.1250]} zoom={13}>
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <Marker position={[27.3965, 80.1250]}>
+                    <Popup>Himanshu lives here, come over for a cup of coffee :)</Popup>
+                </Marker>
+                </MapContainer>
             </div>
         </div>
         <Loader type="pacman"/>
