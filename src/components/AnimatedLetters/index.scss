@@ -4,7 +4,23 @@
     animation: bounceIn 1s 1s;
     animation-fill-mode: forwards;
     min-width: 10px;
+
+    
+
 }
+.text-animate-hover {
+    min-width: 10px;
+    display: inline-block;
+    animation-fill-mode: both;
+    
+    &:hover {
+        animation: rubberBand 1s;
+        color: #ffd700;
+    }
+
+}
+
+
 
 //looping to animate letters indivisually in series
 @for $i from 1 through 35 {
