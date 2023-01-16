@@ -1,15 +1,45 @@
-import './index.scss';
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap-trial'
+import DrawSVGPlugin from 'gsap-trial/DrawSVGPlugin'
 import LogoS from '../../../assets/images/logo-s.png'
-import { useRef } from 'react';
+import './index.scss'
+
 
 const Logo = () => {
 
-    const bgRef = useRef();
-    const outlineLogoRef= useRef();
-    const solidLogoRef = useRef();
+  const bgRef = useRef()
+  const outlineLogoRef = useRef()
+  const solidLogoRef = useRef()
+
+  useEffect(() => {
+    gsap.registerPlugin(DrawSVGPlugin)
+
+    gsap.timeline()
+      .to(bgRef.current, {
+        duration: 1,
+        opacity: 1,
+      })
+      .from(outlineLogoRef.current, {
+        drawSVG: 0,
+        duration: 15,
+      })
+
+    gsap.fromTo(
+      solidLogoRef.current,
+      {
+        opacity: .2,
+      },
+      {
+        opacity: 1,
+        delay: 3,
+        duration: 4,
+      }
+    )
+  }, [])
+
     return (
-        <div className="logo-container">
-            <img src={LogoS} alt="H" className="solid-logo" />
+        <div className="logo-container" ref={bgRef}>
+            <img ref={solidLogoRef} src={LogoS} alt="H" className="solid-logo" />
             <svg
         width="559pt"
         height="897pt"
