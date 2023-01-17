@@ -13,7 +13,7 @@ const Logo = () => {
         
 
 
-        <div className="stage-cube-cont">
+        <div className=" logo-container stage-cube-cont">
                 <div className="cubespinner">
                     <div className="face1">
                     <img src={LogoS} alt="H" className="solid-logo" />
