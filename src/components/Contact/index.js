@@ -6,30 +6,32 @@ import emailjs from '@emailjs/browser'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 const Contact = () => {
-    const [letterClass, setLetterClass] = useState('text-animate ')
-    const form = useRef()
+    const [letterClass, setLetterClass] = useState('text-animate ');
+    const form = useRef();
     useEffect(() => {
         setTimeout(()=>{
             setLetterClass('text-animate-hover')
         },3000)
     },[])
-
+    const serviceID='service_iwubx6f';
+    const templateID='template_3zcea3e';
+    const publicKey='KSxtV4g6URKZv0vL6';
     const sendEmail = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        emailjs
-            .sendForm(
-                'gmail',
-                'template_3zcea3e',
+        emailjs.sendForm(
+                serviceID,
+                templateID,
                 form.current,
-                'Oq1shbmElLDlOUUC2PEE8'
+                publicKey
             )
             .then(
                 ()=>{
                     alert('Message successfully sent!')
                     window.location.reload(false)
                 },
-                () =>{
+                (error) =>{
+                    console.log(error.text);
                     alert('Failed to send the message, please try again')
                 }
             )
