@@ -104,6 +104,11 @@
             &:nth-of-type(3) {
                 animation-delay: 1.3s;
             }
+
+            em {
+                color: #ffd700;
+                
+            }
         }
     }
 
@@ -124,5 +129,18 @@
         position: initial;
         height: auto;
         min-height: auto;
+
+        &.about-page,
+        &.contact-page {
+            .text-zone {
+                position: initial;
+                transform: none;
+                width: 100%;
+                display: block;
+                padding: 20px;
+                box-sizing: border-box;
+                
+            }
+        }
     }
 }

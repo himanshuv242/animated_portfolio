@@ -12,8 +12,8 @@ const Logo = () => {
         </div> */}
         
 
-
-        <div className=" logo-container stage-cube-cont">
+        <div className="logo-section">
+        <div className=" logo-container ">
                 <div className="cubespinner">
                     <div className="face1">
                     <img src={LogoS} alt="H" className="solid-logo" />
@@ -35,6 +35,8 @@ const Logo = () => {
                     </div>
                 </div>
             </div>
+        </div>
+        
       </>
 
         

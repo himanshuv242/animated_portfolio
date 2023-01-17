@@ -27,6 +27,7 @@ const About = () => {
                 <p>Hey there! I am passionate about how things works, how they are connected and how they can be combined leading to great innovations. I analyze the root cause of problem statement and work efficiently to cure it as soon as possible.</p>
                 <p>I'm quietly confident, naturally curious, and perpetually working on improving my chope one design problem at a time.</p>
                 <p>If I need to define myself in one sentence that would be a Explorer!</p>
+                <p>My skills : ReactJS, <em>NodeJS</em>, ExpressJS, <em>MongoDB</em>, React Native, <em>GitHub</em>, SQL, <em>C++</em>C++, DSA, <em>Strong Problem Solving.</em> </p>
             </div>
 
             <div className="stage-cube-cont">
